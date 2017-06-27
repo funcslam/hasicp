@@ -239,4 +239,4 @@ sqrt''' x = sqrtiter 1.0
                             guess
                             (sqrtiter (improve guess))
 
--- 1.1절 끝
+-- 1.1 끝
