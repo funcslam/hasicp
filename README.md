@@ -1,2 +1,2 @@
-# sicp
-The Glorious Haskell Coursework through the classic textbook SICP!
+# Haskell SICP
+The Glorious Haskell Coursework through the Classic Textbook SICP!
