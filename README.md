@@ -1,2 +1,2 @@
 # sicp
-my haskell study workthrough for the classic textbook sicp
+The Glorious Haskell Coursework through the classic textbook SICP!
