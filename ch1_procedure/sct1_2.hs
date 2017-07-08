@@ -271,7 +271,7 @@ gcd' a b = if' (b==0) a (gcd' b (mod a b))
 smallestdiv n = finddiv n 2
 finddiv n t
   | t^2 > n      = n
-  | n`div`t == 0 = t
+  | n`mod`t == 0 = t
   | otherwise    = finddiv n (t+1)
 -- 이 함수를 이용해, 가장 작은 약수가 자신과 같다면 소수라고 할 수 있다.
 isprime n = n == smallestdiv n
@@ -288,7 +288,7 @@ isprime n = n == smallestdiv n
 expmod base exp m
   | exp == 0  = 1
   | even exp  = mod (square (expmod base (exp`div`2) m)) m
-  | otherwise = mod (base * (expmod base (exp-1) m)) m
+  | otherwise = mod (base * expmod base (exp-1) m) m
 
 fermattest n = do
   pick <- rndm $ n-1
@@ -302,3 +302,17 @@ rndm x = do
 fastprime n times = do
   lst <- replicateM times $ fermattest n
   return $ and lst
+
+-- 확률을 바탕으로 하는 알고리즘
+-- 페르마 검사를 통과했다 해도 소수일 확률이 높을 뿐, 확정적인 결과를 내지 못한다.
+-- 카마이클 수 = 페르마 검사를 쓸모없게 만드는 수. 합성수임에도 페르마 검사를 통과한다.
+-- 페르마 검사의 조건을 약간 수정하여 예외가 없게 만든 밀러-라빈 검사가 있다.
+-- 카마이클 수의 개수는 매우 적기 때문에, 소수일 확률이 높은 것은 공학적으로 의미가 있다.
+
+-- 연습문제 1.21
+-- smallest-divisor로 199, 1999, 19999의 약수를 찾아라.
+-- smallestdiv 199 = 199
+-- smallestdiv 1999 = 1999
+-- smallestdiv 19999 = 7
+
+-- 연습문제 1.22
