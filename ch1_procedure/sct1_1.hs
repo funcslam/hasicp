@@ -17,8 +17,8 @@
 --      오랜 기간동안 최적화된 컴파일러 GHC, 간단하고 유용한 REPL GHCi.
 --      환경, 빌드, 패키지 관리 등 통합 도구 stack.
 
-
--- 1.1 프로그래밍의 기본 요소 The Elements of Programming
+main = putStrLn "1.1 The Elements of Programming"
+-- 1.1 프로그래밍의 기본 요소
 -- 좋은 프로그래밍 언어의 세 가지 표현 방식 =
 --      기본 식 primitive expression = 언어에서 가장 간단한 것.
 --      엮어내는 수단 means of combination = 식을 모아 복잡한 것으로 만든다.
@@ -174,7 +174,7 @@ sumoflargersquares a b c
 sqrtiter guess x = if' (isgood guess x) guess (sqrtiter (improve guess x) x)
 improve guess x = average guess (x / guess)
 average x y = (x + y) / 2
-isgood guess x = (abs' ((square guess) - x)) < 0.001
+isgood guess x = abs' (square guess - x) < 0.001
 sqrt' x = sqrtiter 1.0 x
 
 -- 연습문제 1.6
@@ -190,7 +190,7 @@ sqrtiter' guess x = newif (isgood guess x)
 -- 세제곱근을 구하는 뉴튼 법 프로시저를 짜보자.
 cubeiter guess x = if' (isgood guess x) guess (cubeiter (improve guess x) x)
     where improve guess x = (x / guess ** 2 + 2 * guess) / 3
-          isgood guess x = (abs' ((guess ** 3) - x)) < 0.001
+          isgood guess x = abs' (guess ** 3 - x) < 0.001
 cbrt x = cubeiter 1.0 x
 
 
@@ -222,7 +222,7 @@ cbrt x = cubeiter 1.0 x
 
 sqrt'' x = sqrtiter 1.0 x
     where
-        isgood guess x   = (abs' ((square guess) - x)) < 0.001
+        isgood guess x   = abs' (square guess - x) < 0.001
         improve guess x  = average guess (x / guess)
         sqrtiter guess x = if' (isgood guess x)
                             guess
@@ -233,7 +233,7 @@ sqrt'' x = sqrtiter 1.0 x
 
 sqrt''' x = sqrtiter 1.0
     where
-        isgood guess     = (abs' ((square guess) - x)) < 0.001
+        isgood guess     = abs' (square guess - x) < 0.001
         improve guess    = average guess (x / guess)
         sqrtiter guess   = if' (isgood guess)
                             guess
