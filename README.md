@@ -1,2 +1,2 @@
-# Haskell SICP
-The Glorious Haskell Coursework through the Classic Textbook SICP!
+# SICP in Haskell
+A Haskell revision for the classic textbook *Structure and Interpretation of Computer Programs*.
